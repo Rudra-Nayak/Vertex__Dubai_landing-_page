@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/vertex/navbar"
 import { Hero } from "@/components/vertex/hero"
+import { About } from "@/components/vertex/about"
 import { Portfolio } from "@/components/vertex/portfolio"
 import { WhyUs } from "@/components/vertex/why-us"
 import { Contact } from "@/components/vertex/contact"
@@ -10,6 +11,7 @@ export default function Page() {
     <main className="relative min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       <Navbar />
       <Hero />
+      <About />
       <Portfolio />
       <WhyUs />
       <Contact />

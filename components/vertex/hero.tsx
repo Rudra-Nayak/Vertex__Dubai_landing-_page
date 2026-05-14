@@ -35,11 +35,15 @@ export function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="font-serif text-[clamp(2.75rem,9vw,8rem)] font-normal leading-[0.95] tracking-tight text-balance text-foreground"
+          className="text-[clamp(2.75rem,9vw,8rem)] font-light leading-[0.9] tracking-[-0.03em] text-balance text-foreground [font-family:var(--font-cormorant)] [text-shadow:0_0_20px_rgba(197,160,89,0.1)]"
         >
-          Residences <span className="italic text-gold/90">defined</span>
+          Residences defined
           <br />
-          by silence.
+          by{" "}
+          <span className="italic text-[#C5A059]/75">
+            silence
+          </span>
+          .
         </motion.h1>
 
         <motion.p
@@ -59,10 +63,10 @@ export function Hero() {
           className="mt-12 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-8"
         >
           <a
-            href="#portfolio"
+            href="#listings"
             className="group relative inline-flex items-center gap-4 border border-gold bg-gold/0 px-8 py-4 font-sans text-xs uppercase tracking-[0.3em] text-gold transition-all duration-500 hover:bg-gold hover:text-primary-foreground"
           >
-            View Portfolio
+            View Listings
             <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
           </a>
           <a
