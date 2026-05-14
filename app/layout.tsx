@@ -28,6 +28,7 @@ export const metadata: Metadata = {
   title: 'Vertex Dubai | Boutique Real Estate',
   description:
     'A boutique Dubai real estate agency curating an exceptional portfolio of penthouses, villas, and waterfront residences.',
+  generator: 'Next.js',
 }
 
 export const viewport: Viewport = {

@@ -48,10 +48,11 @@ export function GoldFlash() {
       style={{
         x: springX,
         y: springY,
-        zIndex: 1,
+        zIndex: 30,
         transform: "translate3d(0,0,0)",
+        mixBlendMode: "screen",
         background:
-          "radial-gradient(circle, rgba(197, 160, 89, 0.07) 0%, rgba(0,0,0,0) 70%)",
+          "radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, rgba(0,0,0,0) 70%)",
       }}
     />
   )
