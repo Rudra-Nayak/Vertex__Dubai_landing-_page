@@ -4,54 +4,90 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Quiet Luxury palette */
-  --background: #0B0B0B;
-  --foreground: oklch(0.97 0.005 90); /* warm white */
-  --card: oklch(0.21 0.005 240);
-  --card-foreground: oklch(0.97 0.005 90);
-  --popover: oklch(0.18 0.005 240);
-  --popover-foreground: oklch(0.97 0.005 90);
-  --primary: #C5A059; /* Dubai Gold */
-  --primary-foreground: oklch(0.15 0.005 240);
-  --secondary: oklch(0.24 0.005 240);
-  --secondary-foreground: oklch(0.97 0.005 90);
-  --muted: oklch(0.24 0.005 240);
-  --muted-foreground: oklch(0.7 0.01 90);
-  --accent: #C5A059; /* Dubai Gold */
-  --accent-foreground: oklch(0.15 0.005 240);
+  /* Editorial Quiet Luxury Palette */
+
+  --background: #0F0F10;
+  --foreground: oklch(0.965 0.004 90);
+
+  --card: oklch(0.17 0.004 240);
+  --card-foreground: oklch(0.965 0.004 90);
+
+  --popover: oklch(0.16 0.004 240);
+  --popover-foreground: oklch(0.965 0.004 90);
+
+  /* Muted bronze instead of bright Dubai gold */
+  --primary: #A68A64;
+  --primary-foreground: #111111;
+
+  --secondary: oklch(0.22 0.004 240);
+  --secondary-foreground: oklch(0.96 0.004 90);
+
+  --muted: oklch(0.22 0.004 240);
+  --muted-foreground: oklch(0.72 0.008 90);
+
+  --accent: #A68A64;
+  --accent-foreground: #111111;
+
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.97 0.005 90);
-  --border: oklch(0.3 0.005 240 / 0.4);
-  --input: oklch(0.3 0.005 240);
-  --ring: #C5A059;
-  --radius: 0.25rem;
-  --gold: #C5A059;
+
+  /* Softer borders */
+  --border: oklch(0.28 0.004 240 / 0.35);
+  --input: oklch(0.28 0.004 240);
+
+  --ring: #A68A64;
+
+  /* More elegant radius */
+  --radius: 0.125rem;
+
+  /* Custom luxury tones */
+  --gold: #A68A64;
+  --gold-soft: #8F7757;
+  --surface: rgba(255,255,255,0.03);
+  --surface-hover: rgba(255,255,255,0.05);
 }
 
 @theme inline {
   --font-sans: var(--font-inter);
-  --font-serif: var(--font-playfair);
+
+  /* Replace Playfair with Cormorant */
+  --font-serif: var(--font-cormorant);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
   --color-gold: var(--gold);
-  --radius-sm: calc(var(--radius) - 2px);
+  --color-gold-soft: var(--gold-soft);
+
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+
+  --radius-sm: calc(var(--radius) - 1px);
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 2px);
   --radius-xl: calc(var(--radius) + 4px);
@@ -59,11 +95,30 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/40;
   }
-  
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "ss01", "cv11";
+    @apply bg-background text-foreground antialiased;
+
+    font-feature-settings:
+      "liga" 1,
+      "kern" 1,
+      "ss01" 1,
+      "cv11" 1;
+
+    text-rendering: optimizeLegibility;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(166, 138, 100, 0.22);
+    color: white;
   }
 }

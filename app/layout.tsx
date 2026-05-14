@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next'
-import { Cormorant_Garamond, Playfair_Display, Inter } from 'next/font/google'
+import { Cormorant_Garamond, Playfair_Display, Inter, Inter_Tight } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { CustomCursor } from '@/components/CustomCursor'
+import { ConciergeBar } from '@/components/ConciergeBar'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -13,6 +14,13 @@ const playfair = Playfair_Display({
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+})
+
+const interTight = Inter_Tight({
+  subsets: ['latin'],
+  weight: ['200'],
+  variable: '--font-inter-tight',
   display: 'swap',
 })
 
@@ -43,9 +51,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} ${cormorant.variable} bg-background`}>
+    <html lang="en" className={`${cormorant.variable} ${playfair.variable} ${inter.variable} ${interTight.variable} bg-background`}>
       <body className="font-sans antialiased bg-background text-foreground">
         <CustomCursor />
+        <ConciergeBar />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
