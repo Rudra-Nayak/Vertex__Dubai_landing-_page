@@ -1,101 +1,112 @@
 "use client"
 
-import { type ReactNode } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
-import { Reveal } from "./reveal"
 
-type Property = {
-  title: string
-  location: string
-  price: string
-  size: string
-  image: string
-  span: string
-  tag: string
-}
-
-const properties: Property[] = [
+const properties = [
   {
     title: "Sky Mansion",
     location: "Penthouse",
     price: "AED 45M",
-    size: "Private sky residence",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9",
-    span: "md:col-span-2",
-    tag: "Large",
+    description: "Private sky residence",
+    tag: "Signature Residence",
+    image:
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1600&auto=format&fit=crop",
+    large: true,
   },
   {
     title: "Waterfront Villa",
     location: "Jumeirah",
     price: "AED 12M",
-    size: "Beachfront estate",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
-    span: "",
-    tag: "Waterfront",
+    description: "Beachfront estate",
+    tag: "Beachfront",
+    image:
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1400&auto=format&fit=crop",
   },
   {
     title: "Modern Loft",
     location: "Downtown",
     price: "AED 5.5M",
-    size: "Design-led residence",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
-    span: "",
-    tag: "Urban",
+    description: "Design-led residence",
+    tag: "Private Loft",
+    image:
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1400&auto=format&fit=crop",
   },
   {
     title: "Private Island Plot",
     location: "World Islands",
     price: "AED 88M",
-    size: "Rare land release",
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688",
-    span: "",
-    tag: "Ultra Rare",
+    description: "Rare land release",
+    tag: "Rare Acquisition",
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400&auto=format&fit=crop",
   },
   {
     title: "Canal Glass House",
     location: "Business Bay",
     price: "AED 19M",
-    size: "Waterfront duplex",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=90",
-    span: "",
+    description: "Waterfront duplex",
     tag: "New Arrival",
+    image:
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1400&auto=format&fit=crop",
   },
 ]
 
-const cardTransition = { type: "spring", damping: 20, stiffness: 100 } as const
-
 const imageVariants = {
-  rest: { scale: 1, filter: "blur(0px)" },
-  hover: { scale: 1.05, filter: "blur(2px) contrast(120%) brightness(110%)" },
-}
-
-const glassVariants = {
-  rest: { y: "105%", opacity: 0 },
-  hover: { y: "0%", opacity: 1 },
-}
-
-const overlayContentVariants = {
-  rest: {},
+  rest: {
+    scale: 1,
+    filter: "brightness(0.88)",
+  },
   hover: {
-    transition: {
-      staggerChildren: 0.09,
-      delayChildren: 0.16,
-    },
+    scale: 1.045,
+    filter: "brightness(1)",
   },
 }
 
-const overlayTextVariants = {
-  rest: { opacity: 0, y: 16 },
-  hover: { opacity: 1, y: 0 },
+const overlayVariants = {
+  rest: {
+    opacity: 0.82,
+  },
+  hover: {
+    opacity: 1,
+  },
+}
+
+const contentVariants = {
+  rest: {
+    y: 0,
+  },
+  hover: {
+    y: -6,
+  },
+}
+
+const arrowVariants = {
+  rest: {
+    rotate: 0,
+    scale: 1,
+  },
+  hover: {
+    rotate: 45,
+    scale: 1.08,
+  },
 }
 
 export function Portfolio() {
   return (
-    <section id="listings" className="relative w-full px-6 py-24 md:py-32 lg:px-10">
+    <section
+      id="listings"
+      className="relative overflow-hidden px-6 py-28 md:px-10 md:py-36"
+    >
+      {/* Ambient background */}
+      <div className="absolute inset-0 opacity-[0.04]">
+        <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,#A68A64,transparent_40%)]" />
+      </div>
+
       <div className="mx-auto max-w-7xl">
-        <Reveal className="mb-14 flex flex-col gap-6 md:mb-20 md:flex-row md:items-end md:justify-between">
+        {/* Header */}
+         <div className="mb-14 flex flex-col gap-6 md:mb-20 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="mb-5 flex items-center gap-3 font-sans text-[11px] uppercase tracking-[0.4em] text-gold">
               <span className="h-px w-8 bg-gold" />
@@ -109,134 +120,142 @@ export function Portfolio() {
             Five private opportunities across Dubai&apos;s most coveted addresses,
             each curated for rarity, privacy, and long-term value.
           </p>
-        </Reveal>
+        </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:auto-rows-[20rem] md:gap-5">
-          {properties.map((p, i) => (
-            <PropertyCard key={p.title} property={p} index={i} />
-          ))}
+        {/* Layout */}
+        <div className="space-y-16">
+          {/* Hero */}
+          <PropertyCard property={properties[0]} large />
+
+          {/* Grid */}
+          <div className="grid gap-16 md:grid-cols-2">
+            <div className="space-y-16">
+              <PropertyCard property={properties[1]} />
+              <PropertyCard property={properties[3]} />
+            </div>
+
+            <div className="space-y-16 pt-24">
+              <PropertyCard property={properties[2]} />
+              <PropertyCard property={properties[4]} />
+            </div>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
-function PropertyCard({ property, index }: { property: Property; index: number }) {
-  return (
-    <ListingCardWrapper property={property} index={index}>
-      <div className="relative h-72 w-full md:h-full">
-        <motion.div
-          variants={imageVariants}
-          transition={{ ...cardTransition, duration: 1.2 }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={property.image || "/placeholder.svg"}
-            alt={property.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
-          />
-        </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/20 to-transparent" />
-      </div>
-
-      <div className="absolute left-5 top-5 flex items-center gap-2 border border-gold/40 bg-background/30 px-3 py-1 backdrop-blur-md">
-        <span className="h-1 w-1 rounded-full bg-gold" />
-        <span className="font-sans text-[10px] uppercase tracking-[0.25em] text-gold">
-          {property.tag}
-        </span>
-      </div>
-
-      <div className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center border border-white/10 bg-background/30 text-foreground backdrop-blur-md transition-all duration-500 group-hover:border-gold group-hover:bg-gold group-hover:text-primary-foreground">
-        <ArrowUpRight className="h-4 w-4 transition-transform duration-500 group-hover:rotate-45" />
-      </div>
-
-      <motion.div
-        variants={glassVariants}
-        transition={cardTransition}
-        className="absolute inset-x-0 bottom-0 overflow-hidden rounded-t-[45%_18%] border-t border-white/25 bg-white/20 px-6 pb-6 pt-14 shadow-2xl shadow-black/30 backdrop-blur-lg md:px-8 md:pb-8"
-      >
-        <div className="absolute -top-12 left-1/2 h-24 w-[115%] -translate-x-1/2 rounded-[50%] bg-white/20 blur-sm" />
-        <motion.div variants={overlayContentVariants} className="relative">
-          <motion.p
-            variants={overlayTextVariants}
-            transition={cardTransition}
-            className="font-sans text-[10px] uppercase tracking-[0.3em] text-gold"
-          >
-            {property.price}
-          </motion.p>
-          <motion.div variants={overlayTextVariants} transition={cardTransition}>
-            <LiquidTitle title={property.title} />
-          </motion.div>
-          <motion.div
-            variants={overlayTextVariants}
-            transition={cardTransition}
-            className="mt-5 flex items-end justify-between gap-4 border-t border-white/25 pt-4"
-          >
-            <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-foreground/70">
-              {property.location}
-            </p>
-            <p className="font-sans text-xs tracking-wide text-foreground/70">
-              {property.size}
-            </p>
-          </motion.div>
-        </motion.div>
-      </motion.div>
-    </ListingCardWrapper>
-  )
-}
-
-function ListingCardWrapper({
+function PropertyCard({
   property,
-  index,
-  children,
+  large = false,
 }: {
-  property: Property
-  index: number
-  children: ReactNode
+  property: (typeof properties)[0]
+  large?: boolean
 }) {
   return (
     <motion.article
-      data-cursor="property"
-      layout
       initial="rest"
-      whileInView={{ opacity: 1, y: 0 }}
       whileHover="hover"
-      viewport={{ once: true, margin: "-60px" }}
+      animate="rest"
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
       transition={{
-        layout: cardTransition,
-        opacity: { duration: 0.8, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] },
-        y: { duration: 0.8, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] },
-        scale: cardTransition,
+        opacity: {
+          duration: 1,
+          ease: [0.22, 1, 0.36, 1],
+        },
+        y: {
+          duration: 1,
+          ease: [0.22, 1, 0.36, 1],
+        },
       }}
-      variants={{
-        rest: { opacity: 0, y: 30 },
-        hover: { scale: 1.025 },
-      }}
-      className={`group relative overflow-hidden border border-white/5 bg-card ${property.span}`}
+      className="
+        group relative overflow-hidden border border-white/[0.06] bg-black
+        before:absolute before:inset-0 before:bg-white/[0.02]
+        before:opacity-0 before:transition-opacity
+        before:duration-700 hover:before:opacity-100
+      "
     >
-      {children}
-    </motion.article>
-  )
-}
+      {/* IMAGE */}
+      <div
+        className={`relative overflow-hidden ${
+          large ? "aspect-[21/9]" : "aspect-[4/3]"
+        }`}
+      >
+        <motion.div
+          variants={imageVariants}
+          transition={{
+            duration: 1.4,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={property.image}
+            alt={property.title}
+            fill
+            sizes="100vw"
+            className="object-cover brightness-[0.88]"
+          />
+        </motion.div>
 
-function LiquidTitle({ title }: { title: string }) {
-  return (
-    <motion.span
-      className="mt-2 block bg-clip-text font-serif text-2xl leading-tight text-transparent md:text-3xl"
-      style={{
-        backgroundImage:
-          "linear-gradient(0deg, #C5A059 0%, #C5A059 45%, rgba(255,255,255,0.96) 55%, rgba(255,255,255,0.96) 100%)",
-        backgroundSize: "100% 220%",
-      }}
-      variants={{
-        rest: { backgroundPosition: "0% 0%" },
-        hover: { backgroundPosition: "0% 100%" },
-      }}
-      transition={{ ...cardTransition, duration: 0.9 }}
-    >
-      {title}
-    </motion.span>
+        {/* OVERLAY */}
+        <motion.div
+          variants={overlayVariants}
+          transition={{
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"
+        />
+
+        {/* TAG */}
+        <div className="absolute left-8 top-8 z-10">
+          <span className="font-sans text-[10px] uppercase tracking-[0.35em] text-[#A68A64] drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
+            • {property.tag}
+          </span>
+        </div>
+
+        {/* ARROW */}
+        <motion.div
+          variants={arrowVariants}
+          transition={{
+            duration: 0.7,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="absolute right-8 top-8 z-10 flex h-12 w-12 items-center justify-center border border-[#A68A64]/40 bg-black/20 backdrop-blur-sm"
+        >
+          <ArrowUpRight className="h-4 w-4 text-[#A68A64]" />
+        </motion.div>
+
+        {/* CONTENT */}
+        <motion.div
+          variants={contentVariants}
+          transition={{
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="absolute inset-x-0 bottom-0 z-10 p-8 md:p-10"
+        >
+          <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-[#A68A64] drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
+            {property.price}
+          </p>
+
+          <h3 className="mt-3 font-serif text-[2.5rem] font-light leading-none tracking-[-0.045em] text-white drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] md:text-[3.5rem]">
+            {property.title}
+          </h3>
+
+          <div className="mt-6 flex items-end justify-between border-t border-white/10 pt-5">
+            <p className="font-sans text-[10px] uppercase tracking-[0.35em] text-white/60">
+              {property.location}
+            </p>
+
+            <p className="font-sans text-sm text-white/70">
+              {property.description}
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </motion.article>
   )
 }

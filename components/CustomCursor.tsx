@@ -3,24 +3,35 @@
 import { useEffect, useState } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 
-const gold = "#C5A059"
-type CursorMode = "default" | "action" | "listing"
+type CursorMode = "default" | "action" | "listing" | "text"
 
 export function CustomCursor() {
   const mouseX = useMotionValue(-100)
   const mouseY = useMotionValue(-100)
-  const springX = useSpring(mouseX, { stiffness: 420, damping: 32, mass: 0.5 })
-  const springY = useSpring(mouseY, { stiffness: 420, damping: 32, mass: 0.5 })
+
+  const springX = useSpring(mouseX, {
+    stiffness: 420,
+    damping: 32,
+    mass: 0.5,
+  })
+
+  const springY = useSpring(mouseY, {
+    stiffness: 420,
+    damping: 32,
+    mass: 0.5,
+  })
+
   const [mode, setMode] = useState<CursorMode>("default")
   const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {
-    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    const canHover = window.matchMedia(
+      "(hover: hover) and (pointer: fine)"
+    ).matches
+
     setEnabled(canHover)
 
-    if (!canHover) {
-      return
-    }
+    if (!canHover) return
 
     const handleMouseMove = (event: MouseEvent) => {
       const target = event.target
@@ -38,7 +49,21 @@ export function CustomCursor() {
         return
       }
 
-      setMode(target.closest("button, a") ? "action" : "default")
+      if (target.closest("button, a")) {
+        setMode("action")
+        return
+      }
+
+      const isTextNode =
+        target.closest("p, h1, h2, h3, h4, h5, h6, span, li, blockquote, label") &&
+        !target.closest("button, a, [data-cursor='property']")
+
+      if (isTextNode) {
+        setMode("text")
+        return
+      }
+
+      setMode("default")
     }
 
     const handleMouseLeave = () => {
@@ -56,61 +81,145 @@ export function CustomCursor() {
     }
   }, [mouseX, mouseY])
 
-  if (!enabled) {
-    return null
-  }
+  if (!enabled) return null
 
   return (
     <motion.div
       aria-hidden="true"
-      className="pointer-events-none fixed left-0 top-0 -ml-12 -mt-12 flex h-24 w-24 items-center justify-center"
+      className="pointer-events-none fixed left-0 top-0 z-[9999] flex items-center justify-center"
       style={{
         x: springX,
         y: springY,
-        zIndex: 2147483647,
       }}
     >
+      {/* OUTER CURSOR */}
       <motion.div
-        className="absolute rounded-full border"
         animate={{
-          width: mode === "listing" ? 88 : mode === "action" ? 36 : 12,
-          height: mode === "listing" ? 88 : mode === "action" ? 36 : 12,
-          backgroundColor: mode === "default" ? gold : "rgba(197, 160, 89, 0)",
-          borderColor: gold,
-          borderStyle: mode === "listing" ? "dashed" : "solid",
+          width:
+            mode === "listing" ? 84
+            : mode === "action" ? 34
+            : mode === "text" ? 68
+            : 10,
+
+          height:
+            mode === "listing" ? 84
+            : mode === "action" ? 34
+            : mode === "text" ? 68
+            : 10,
+
+          borderColor:
+            mode === "default"
+              ? "rgba(166,138,100,0)"
+              : "rgba(166,138,100,0.7)",
+
+          backgroundColor:
+            mode === "default"
+              ? "rgba(166,138,100,1)"
+              : mode === "text"
+              ? "rgba(166,138,100,0.06)"
+              : "rgba(166,138,100,0.03)",
+
           opacity: 1,
         }}
-        transition={{ type: "spring", stiffness: 260, damping: 22 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 24,
+        }}
+        className="
+          absolute
+          -translate-x-1/2
+          -translate-y-1/2
+          rounded-full
+          border
+          backdrop-blur-[0px]
+        "
       />
+
+      {/* INNER DOT */}
       <motion.div
-        className="absolute rounded-full border border-dashed border-gold"
         animate={{
-          width: mode === "listing" ? 88 : 12,
-          height: mode === "listing" ? 88 : 12,
-          opacity: mode === "listing" ? 1 : 0,
-          rotate: mode === "listing" ? 360 : 0,
+          scale:
+            mode === "listing" ? 0
+            : mode === "text" ? 0
+            : mode === "action" ? 0.7
+            : 1,
+
+          opacity:
+            mode === "listing" || mode === "text" ? 0 : 1,
         }}
         transition={{
-          width: { type: "spring", stiffness: 260, damping: 22 },
-          height: { type: "spring", stiffness: 260, damping: 22 },
-          opacity: { duration: 0.2 },
-          rotate: {
-            duration: 5,
-            repeat: mode === "listing" ? Infinity : 0,
-            ease: "linear",
-          },
+          duration: 0.25,
         }}
+        className="
+          absolute
+          h-1.5
+          w-1.5
+          -translate-x-1/2
+          -translate-y-1/2
+          rounded-full
+          bg-[#A68A64]
+        "
       />
-      <motion.span
-        className="relative max-w-16 text-center font-sans text-[9px] font-medium uppercase leading-tight tracking-[0.18em] text-gold"
+
+      {/* LISTING LABEL */}
+      <motion.div
         animate={{
           opacity: mode === "listing" ? 1 : 0,
-          scale: mode === "listing" ? 1 : 0.8,
+          scale: mode === "listing" ? 1 : 0.92,
+          y: mode === "listing" ? 0 : 4,
         }}
-        transition={{ duration: 0.2 }}
+        transition={{
+          duration: 0.22,
+        }}
+        className="
+          absolute
+          -translate-x-1/2
+          -translate-y-1/2
+          whitespace-nowrap
+        "
       >
-        View Detail
-      </motion.span>
+        <span
+          className="
+            font-sans
+            text-[9px]
+            uppercase
+            tracking-[0.32em]
+            text-[#A68A64]
+          "
+        >
+          Explore
+        </span>
+      </motion.div>
+
+      {/* TEXT MAGNIFY LABEL */}
+      <motion.div
+        animate={{
+          opacity: mode === "text" ? 1 : 0,
+          scale: mode === "text" ? 1 : 0.92,
+          y: mode === "text" ? 0 : 4,
+        }}
+        transition={{
+          duration: 0.22,
+        }}
+        className="
+          absolute
+          -translate-x-1/2
+          -translate-y-1/2
+          whitespace-nowrap
+        "
+      >
+        <span
+          className="
+            font-sans
+            text-[9px]
+            uppercase
+            tracking-[0.32em]
+            text-[#A68A64]
+          "
+        >
+        </span>
+      </motion.div>
     </motion.div>
   )
 }
