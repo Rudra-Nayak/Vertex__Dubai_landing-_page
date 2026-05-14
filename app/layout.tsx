@@ -25,10 +25,9 @@ const cormorant = Cormorant_Garamond({
 })
 
 export const metadata: Metadata = {
-  title: 'Vertex Dubai — Boutique Real Estate',
+  title: 'Vertex Dubai | Boutique Real Estate',
   description:
     'A boutique Dubai real estate agency curating an exceptional portfolio of penthouses, villas, and waterfront residences.',
-  generator: 'v0.app',
 }
 
 export const viewport: Viewport = {

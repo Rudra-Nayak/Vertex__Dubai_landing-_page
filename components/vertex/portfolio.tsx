@@ -1,6 +1,6 @@
 "use client"
 
-import { useId, type ReactNode } from "react"
+import { type ReactNode } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
@@ -22,7 +22,7 @@ const properties: Property[] = [
     location: "Penthouse",
     price: "AED 45M",
     size: "Private sky residence",
-    image: "/properties/penthouse.jpg",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9",
     span: "md:col-span-2",
     tag: "Large",
   },
@@ -31,7 +31,7 @@ const properties: Property[] = [
     location: "Jumeirah",
     price: "AED 12M",
     size: "Beachfront estate",
-    image: "/properties/villa.jpg",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
     span: "",
     tag: "Waterfront",
   },
@@ -40,7 +40,7 @@ const properties: Property[] = [
     location: "Downtown",
     price: "AED 5.5M",
     size: "Design-led residence",
-    image: "/properties/tower.jpg",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
     span: "",
     tag: "Urban",
   },
@@ -49,7 +49,7 @@ const properties: Property[] = [
     location: "World Islands",
     price: "AED 88M",
     size: "Rare land release",
-    image: "/properties/marina.jpg",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688",
     span: "",
     tag: "Ultra Rare",
   },
@@ -58,7 +58,7 @@ const properties: Property[] = [
     location: "Business Bay",
     price: "AED 19M",
     size: "Waterfront duplex",
-    image: "/properties/tower.jpg",
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=90",
     span: "",
     tag: "New Arrival",
   },
@@ -91,15 +91,6 @@ const overlayTextVariants = {
   hover: { opacity: 1, y: 0 },
 }
 
-const liquidMaskVariants = {
-  rest: {
-    d: "M0 92C60 104 120 80 180 92C240 104 300 80 360 92V120H0Z",
-  },
-  hover: {
-    d: "M0 24C60 6 120 42 180 24C240 6 300 42 360 24V120H0Z",
-  },
-}
-
 export function Portfolio() {
   return (
     <section id="listings" className="relative w-full px-6 py-24 md:py-32 lg:px-10">
@@ -111,7 +102,7 @@ export function Portfolio() {
               The Listings
             </p>
             <h2 className="font-serif text-4xl leading-[1.05] tracking-tight text-balance text-foreground md:text-6xl">
-              A bento selection of <span className="italic">rare</span> addresses.
+              A Signature Collection of <span className="italic">rare</span> addresses.
             </h2>
           </div>
           <p className="max-w-sm font-sans text-sm leading-relaxed text-muted-foreground">
@@ -231,46 +222,21 @@ function ListingCardWrapper({
 }
 
 function LiquidTitle({ title }: { title: string }) {
-  const maskId = useId()
-
   return (
-    <svg
-      className="mt-2 block h-12 w-full overflow-visible md:h-14"
-      viewBox="0 0 360 72"
-      role="img"
-      aria-label={title}
-      preserveAspectRatio="xMinYMid meet"
+    <motion.span
+      className="mt-2 block bg-clip-text font-serif text-2xl leading-tight text-transparent md:text-3xl"
+      style={{
+        backgroundImage:
+          "linear-gradient(0deg, #C5A059 0%, #C5A059 45%, rgba(255,255,255,0.96) 55%, rgba(255,255,255,0.96) 100%)",
+        backgroundSize: "100% 220%",
+      }}
+      variants={{
+        rest: { backgroundPosition: "0% 0%" },
+        hover: { backgroundPosition: "0% 100%" },
+      }}
+      transition={{ ...cardTransition, duration: 0.9 }}
     >
-      <defs>
-        <mask id={maskId}>
-          <rect width="360" height="72" fill="black" />
-          <motion.path
-            variants={liquidMaskVariants}
-            transition={{ ...cardTransition, duration: 0.9 }}
-            fill="white"
-          />
-        </mask>
-      </defs>
-      <text
-        x="0"
-        y="48"
-        fill="rgba(255,255,255,0.28)"
-        fontFamily="var(--font-playfair)"
-        fontSize="34"
-      >
-        {title}
-      </text>
-      <text
-        x="0"
-        y="48"
-        fill="currentColor"
-        className="text-foreground"
-        fontFamily="var(--font-playfair)"
-        fontSize="34"
-        mask={`url(#${maskId})`}
-      >
-        {title}
-      </text>
-    </svg>
+      {title}
+    </motion.span>
   )
 }
