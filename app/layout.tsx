@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Playfair_Display, Inter, Inter_Tight } from 'next/f
 import { Analytics } from '@vercel/analytics/next'
 import { CustomCursor } from '@/components/CustomCursor'
 import { ConciergeBar } from '@/components/ConciergeBar'
+
 import './globals.css'
 
 const playfair = Playfair_Display({
