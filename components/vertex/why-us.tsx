@@ -1,48 +1,48 @@
 "use client"
 
-import { Gem, KeyRound, ShieldCheck, Compass } from "lucide-react"
+import { Leaf, Award, Activity, Sparkles } from "lucide-react"
 import { motion } from "framer-motion"
 import { Reveal } from "./reveal"
 
 const pillars = [
   {
-    icon: Gem,
-    title: "Curated Inventory",
-    body: "Fewer than thirty residences enter our portfolio each year — every one verified, walked, and vetted in person.",
+    icon: Leaf,
+    title: "Sustainable Materials",
+    body: "We prioritize eco-friendly, durable materials that withstand the elements while maintaining premium aesthetics.",
   },
   {
-    icon: KeyRound,
-    title: "Off-Market Access",
-    body: "A private network of owners and developers grants our clients first sight of Dubai's most discreet listings.",
+    icon: Activity,
+    title: "Bespoke 3D Visualization",
+    body: "Every project includes hyper-realistic 3D renderings to ensure perfect alignment with your vision before execution.",
   },
   {
-    icon: ShieldCheck,
-    title: "Absolute Discretion",
-    body: "NDAs, private viewings, and structured acquisitions protect your name long after the keys are handed over.",
+    icon: Award,
+    title: "End-to-End Execution",
+    body: "From conceptual sketches to final landscaping, our team manages every detail of the construction process.",
   },
   {
-    icon: Compass,
-    title: "Lifetime Concierge",
-    body: "From interior architects to citizenship advisors, our team remains on call long after the transaction closes.",
+    icon: Sparkles,
+    title: "Architectural Harmony",
+    body: "We design outdoor spaces that seamlessly integrate with your home's interior and natural surroundings.",
   },
 ]
 
 export function WhyUs() {
   return (
-    <section id="why" className="relative w-full border-t border-white/5 px-6 py-24 md:py-32 lg:px-10">
+    <section id="why" className="relative w-full border-t border-border px-6 py-24 md:py-32 lg:px-10 bg-background">
       <div className="mx-auto max-w-7xl">
         <Reveal className="mx-auto mb-16 max-w-3xl text-center md:mb-24">
           <p className="mb-5 inline-flex items-center gap-3 font-sans text-[11px] uppercase tracking-[0.4em] text-gold">
             <span className="h-px w-8 bg-gold" />
-            Why Vertex
+            Why Choose Our Studio
             <span className="h-px w-8 bg-gold" />
           </p>
           <h2 className="font-serif text-4xl leading-[1.05] tracking-tight text-balance text-foreground md:text-6xl">
-            The art of <span className="italic">unhurried</span> acquisition.
+            The art of <span className="italic text-gold">spatial</span> perfection.
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden border border-white/5 bg-white/5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-px overflow-hidden border border-border bg-border rounded-xl md:grid-cols-2 lg:grid-cols-4">
           {pillars.map((p, i) => (
             <motion.div
               key={p.title}
@@ -50,10 +50,10 @@ export function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative flex flex-col gap-6 bg-background p-8 transition-colors duration-500 hover:bg-card md:p-10"
+              className="group relative flex flex-col gap-6 bg-card p-8 transition-colors duration-500 hover:bg-muted/30 md:p-10"
             >
               <p.icon
-                strokeWidth={1}
+                strokeWidth={1.2}
                 className="h-9 w-9 text-gold transition-transform duration-500 group-hover:-translate-y-1"
               />
               <div>

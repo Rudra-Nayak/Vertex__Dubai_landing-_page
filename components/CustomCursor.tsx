@@ -109,15 +109,15 @@ export function CustomCursor() {
 
           borderColor:
             mode === "default"
-              ? "rgba(166,138,100,0)"
-              : "rgba(166,138,100,0.7)",
+              ? "rgba(74, 107, 83, 0)"
+              : "rgba(74, 107, 83, 0.7)",
 
           backgroundColor:
             mode === "default"
-              ? "rgba(166,138,100,1)"
+              ? "rgba(74, 107, 83, 1)"
               : mode === "text"
-              ? "rgba(166,138,100,0.06)"
-              : "rgba(166,138,100,0.03)",
+              ? "rgba(74, 107, 83, 0.06)"
+              : "rgba(74, 107, 83, 0.03)",
 
           opacity: 1,
         }}
@@ -158,7 +158,7 @@ export function CustomCursor() {
           -translate-x-1/2
           -translate-y-1/2
           rounded-full
-          bg-[#A68A64]
+          bg-[#4A6B53]
         "
       />
 
@@ -185,10 +185,10 @@ export function CustomCursor() {
             text-[9px]
             uppercase
             tracking-[0.32em]
-            text-[#A68A64]
+            text-[#4A6B53]
           "
         >
-          Explore
+          Discover
         </span>
       </motion.div>
 
@@ -215,7 +215,7 @@ export function CustomCursor() {
             text-[9px]
             uppercase
             tracking-[0.32em]
-            text-[#A68A64]
+            text-[#4A6B53]
           "
         >
         </span>

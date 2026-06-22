@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 
 const links = [
-  { label: "Listings", href: "#listings" },
+  { label: "Projects", href: "#projects" },
   { label: "Why Us", href: "#why" },
-  { label: "Endorsements", href: "#testimonials" },
+  { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ]
 
@@ -29,7 +29,7 @@ export function Navbar() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "backdrop-blur-xl bg-background/60 border-b border-white/5"
+          ? "backdrop-blur-xl bg-background/60 border-b border-border"
           : "backdrop-blur-md bg-background/20"
       }`}
     >
@@ -40,7 +40,7 @@ export function Navbar() {
           </span>
           <span className="h-px w-6 bg-gold transition-all duration-300 group-hover:w-10" />
           <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-            Dubai
+            Design
           </span>
         </a>
 
@@ -59,9 +59,9 @@ export function Navbar() {
           <li>
             <a
               href="#contact"
-              className="border border-gold/60 px-5 py-2 font-sans text-xs uppercase tracking-[0.25em] text-gold transition-all hover:bg-gold hover:text-primary-foreground"
+              className="border border-gold/60 rounded-full px-5 py-2 font-sans text-xs uppercase tracking-[0.25em] text-gold transition-all hover:bg-gold hover:text-primary-foreground"
             >
-              Enquire
+              Book Consultation
             </a>
           </li>
         </ul>
@@ -82,7 +82,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="overflow-hidden border-t border-white/5 bg-background/80 backdrop-blur-xl md:hidden"
+            className="overflow-hidden border-t border-border bg-background/80 backdrop-blur-xl md:hidden"
           >
             <ul className="flex flex-col px-6 py-4">
               {links.map((l) => (
@@ -90,7 +90,7 @@ export function Navbar() {
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block border-b border-white/5 py-4 font-serif text-lg tracking-wide text-foreground"
+                    className="block border-b border-border py-4 font-serif text-lg tracking-wide text-foreground"
                   >
                     {l.label}
                   </a>
@@ -100,9 +100,9 @@ export function Navbar() {
                 <a
                   href="#contact"
                   onClick={() => setOpen(false)}
-                  className="inline-block border border-gold/60 px-6 py-3 font-sans text-xs uppercase tracking-[0.25em] text-gold"
+                  className="inline-block border border-gold/60 rounded-full px-6 py-3 font-sans text-xs uppercase tracking-[0.25em] text-gold"
                 >
-                  Enquire
+                  Book Consultation
                 </a>
               </li>
             </ul>

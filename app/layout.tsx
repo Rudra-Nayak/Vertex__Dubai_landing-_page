@@ -34,14 +34,14 @@ const cormorant = Cormorant_Garamond({
 })
 
 export const metadata: Metadata = {
-  title: 'Vertex Dubai | Boutique Real Estate',
+  title: 'Vertex Exterior Design | Luxury Landscape & Architectural Design',
   description:
-    'A boutique Dubai real estate agency curating an exceptional portfolio of penthouses, villas, and waterfront residences.',
+    'Bespoke exterior design, luxury landscaping, modern facades, and premium outdoor living spaces in Dubai.',
   generator: 'Next.js',
 }
 
 export const viewport: Viewport = {
-  themeColor: '#1a1a1c',
+  themeColor: '#4A6B53',
   width: 'device-width',
   initialScale: 1,
 }

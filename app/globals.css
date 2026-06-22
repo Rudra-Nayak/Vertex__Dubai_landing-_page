@@ -4,47 +4,47 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Editorial Quiet Luxury Palette */
+  /* Serene Wellness light theme */
 
-  --background: #0F0F10;
-  --foreground: oklch(0.965 0.004 90);
+  --background: #FAFBF9;
+  --foreground: #1E2921;
 
-  --card: oklch(0.17 0.004 240);
-  --card-foreground: oklch(0.965 0.004 90);
+  --card: #FFFFFF;
+  --card-foreground: #1E2921;
 
-  --popover: oklch(0.16 0.004 240);
-  --popover-foreground: oklch(0.965 0.004 90);
+  --popover: #FFFFFF;
+  --popover-foreground: #1E2921;
 
-  /* Muted bronze instead of bright Dubai gold */
-  --primary: #A68A64;
-  --primary-foreground: #111111;
+  /* Soft sage green primary accent */
+  --primary: #4A6B53;
+  --primary-foreground: #FFFFFF;
 
-  --secondary: oklch(0.22 0.004 240);
-  --secondary-foreground: oklch(0.96 0.004 90);
+  --secondary: #E8EFE9;
+  --secondary-foreground: #1E2921;
 
-  --muted: oklch(0.22 0.004 240);
-  --muted-foreground: oklch(0.72 0.008 90);
+  --muted: #F0F4F1;
+  --muted-foreground: #5B6B5F;
 
-  --accent: #A68A64;
-  --accent-foreground: #111111;
+  --accent: #4A6B53;
+  --accent-foreground: #FFFFFF;
 
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.97 0.005 90);
 
-  /* Softer borders */
-  --border: oklch(0.28 0.004 240 / 0.35);
-  --input: oklch(0.28 0.004 240);
+  /* Sage green borders */
+  --border: #D1DDD4;
+  --input: #D1DDD4;
 
-  --ring: #A68A64;
+  --ring: #4A6B53;
 
-  /* More elegant radius */
-  --radius: 0.125rem;
+  /* Softer rounded corners */
+  --radius: 0.75rem;
 
-  /* Custom luxury tones */
-  --gold: #A68A64;
-  --gold-soft: #8F7757;
-  --surface: rgba(255,255,255,0.03);
-  --surface-hover: rgba(255,255,255,0.05);
+  /* Custom wellness tones */
+  --gold: #4A6B53;
+  --gold-soft: #6A8E74;
+  --surface: rgba(74, 107, 83, 0.05);
+  --surface-hover: rgba(74, 107, 83, 0.08);
 }
 
 @theme inline {
@@ -57,7 +57,7 @@
   --color-foreground: var(--foreground);
 
   --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+  --color-card-foreground: var(--color-card-foreground);
 
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
@@ -118,7 +118,7 @@
   }
 
   ::selection {
-    background: rgba(166, 138, 100, 0.22);
-    color: white;
+    background: rgba(74, 107, 83, 0.15);
+    color: inherit;
   }
 }

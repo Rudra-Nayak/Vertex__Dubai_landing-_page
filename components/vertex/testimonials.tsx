@@ -6,34 +6,34 @@ import { Reveal } from "./reveal"
 
 const testimonials = [
   {
-    quote: "Vertex doesn't just sell property; they curate a lifestyle. Their access to off-market villas in Jumeirah Bay was unparalleled.",
-    author: "M. Al Maktoum",
-    role: "Private Investor",
+    quote: "Vertex completely transformed our backyard into a stunning resort-style retreat. Their attention to detail in the hardscaping and pool design is unmatched.",
+    author: "Omar A.",
+    role: "Villa Owner",
   },
   {
-    quote: "Discretion was my primary concern. The team handled my acquisition with a level of professional silence I haven't found elsewhere.",
-    author: "S. Rossi",
-    role: "International Collector",
+    quote: "The 3D visualizations were incredibly accurate. Seeing our modern facade come to life exactly as proposed gave us complete confidence in their team.",
+    author: "Sarah & James T.",
+    role: "Residential Client",
   },
   {
-    quote: "A refreshing departure from the high-pressure sales of typical agencies. Unhurried, insightful, and truly boutique.",
-    author: "D. Chen",
-    role: "Family Office Director",
+    quote: "Exceptional professionalism from start to finish. The lighting design they implemented completely elevated the ambiance of our outdoor living space.",
+    author: "Michael R.",
+    role: "Property Developer",
   },
 ]
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="relative w-full border-t border-white/5 px-6 py-24 md:py-32 lg:px-10">
+    <section id="testimonials" className="relative w-full border-t border-border px-6 py-24 md:py-32 lg:px-10 bg-background">
       <div className="mx-auto max-w-7xl">
         <Reveal className="mb-16 text-center md:mb-24">
           <p className="mb-5 inline-flex items-center gap-3 font-sans text-[11px] uppercase tracking-[0.4em] text-gold">
             <span className="h-px w-8 bg-gold" />
-            Endorsements
+            Client Testimonials
             <span className="h-px w-8 bg-gold" />
           </p>
           <h2 className="font-serif text-4xl leading-[1.05] tracking-tight text-foreground md:text-6xl">
-            Voices of <span className="italic text-gold">distinction</span>.
+            Stories of <span className="italic text-gold">vision</span> and creation.
           </h2>
         </Reveal>
 
