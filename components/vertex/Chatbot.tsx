@@ -87,7 +87,7 @@ function useLeadTracking() {
 
       // Log updates to standard analytics console
       if (updated.isLead) {
-        console.log('%c[Wellness Lead Captured]', 'color: #4A6B53; font-weight: bold;', updated)
+        console.log('%c[Design Lead Captured]', 'color: #B08B57; font-weight: bold;', updated)
       }
       return updated
     })

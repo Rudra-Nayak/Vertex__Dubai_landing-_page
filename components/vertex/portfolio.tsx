@@ -101,7 +101,7 @@ export function Portfolio() {
     >
       {/* Ambient background */}
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
-        <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,#4A6B53,transparent_40%)]" />
+        <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_top_left,#B08B57,transparent_40%)]" />
       </div>
 
       <div className="mx-auto max-w-7xl">

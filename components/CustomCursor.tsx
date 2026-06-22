@@ -109,15 +109,15 @@ export function CustomCursor() {
 
           borderColor:
             mode === "default"
-              ? "rgba(74, 107, 83, 0)"
-              : "rgba(74, 107, 83, 0.7)",
+              ? "rgba(176, 139, 87, 0)"
+              : "rgba(176, 139, 87, 0.7)",
 
           backgroundColor:
             mode === "default"
-              ? "rgba(74, 107, 83, 1)"
+              ? "rgba(176, 139, 87, 1)"
               : mode === "text"
-              ? "rgba(74, 107, 83, 0.06)"
-              : "rgba(74, 107, 83, 0.03)",
+              ? "rgba(176, 139, 87, 0.06)"
+              : "rgba(176, 139, 87, 0.03)",
 
           opacity: 1,
         }}
@@ -158,7 +158,7 @@ export function CustomCursor() {
           -translate-x-1/2
           -translate-y-1/2
           rounded-full
-          bg-[#4A6B53]
+          bg-[#B08B57]
         "
       />
 
@@ -185,7 +185,7 @@ export function CustomCursor() {
             text-[9px]
             uppercase
             tracking-[0.32em]
-            text-[#4A6B53]
+            text-[#B08B57]
           "
         >
           Discover
@@ -215,7 +215,7 @@ export function CustomCursor() {
             text-[9px]
             uppercase
             tracking-[0.32em]
-            text-[#4A6B53]
+            text-[#B08B57]
           "
         >
         </span>

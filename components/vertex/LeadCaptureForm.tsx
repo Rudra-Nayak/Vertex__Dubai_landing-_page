@@ -92,7 +92,7 @@ export function LeadCaptureForm({ onSubmit }: LeadCaptureFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full bg-white p-5 rounded-2xl border border-border shadow-sm flex flex-col gap-4 font-sans text-foreground mt-2"
+      className="w-full bg-card p-5 rounded-2xl border border-border shadow-sm flex flex-col gap-4 font-sans text-foreground mt-2"
     >
       <div className="text-center border-b border-border pb-3">
         <h4 className="font-serif text-[16px] text-gold font-semibold leading-tight">

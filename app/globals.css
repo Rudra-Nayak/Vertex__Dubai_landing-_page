@@ -4,47 +4,46 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Serene Wellness light theme */
+  /* Premium Dark Theme */
+  --background: #0A0A0C;
+  --foreground: #F2EEE8;
 
-  --background: #FAFBF9;
-  --foreground: #1E2921;
+  --card: #1A1A1F;
+  --card-foreground: #F2EEE8;
 
-  --card: #FFFFFF;
-  --card-foreground: #1E2921;
+  --popover: #1A1A1F;
+  --popover-foreground: #F2EEE8;
 
-  --popover: #FFFFFF;
-  --popover-foreground: #1E2921;
+  /* Accent Gold primary accent */
+  --primary: #B08B57;
+  --primary-foreground: #0A0A0C;
 
-  /* Soft sage green primary accent */
-  --primary: #4A6B53;
-  --primary-foreground: #FFFFFF;
+  --secondary: #1A1A1F;
+  --secondary-foreground: #B8B0A5;
 
-  --secondary: #E8EFE9;
-  --secondary-foreground: #1E2921;
+  --muted: #141418;
+  --muted-foreground: #B8B0A5;
 
-  --muted: #F0F4F1;
-  --muted-foreground: #5B6B5F;
-
-  --accent: #4A6B53;
-  --accent-foreground: #FFFFFF;
+  --accent: #8F7048;
+  --accent-foreground: #F2EEE8;
 
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.97 0.005 90);
 
-  /* Sage green borders */
-  --border: #D1DDD4;
-  --input: #D1DDD4;
+  /* Dark borders */
+  --border: #2D2D35;
+  --input: #2D2D35;
 
-  --ring: #4A6B53;
+  --ring: #B08B57;
 
   /* Softer rounded corners */
   --radius: 0.75rem;
 
-  /* Custom wellness tones */
-  --gold: #4A6B53;
-  --gold-soft: #6A8E74;
-  --surface: rgba(74, 107, 83, 0.05);
-  --surface-hover: rgba(74, 107, 83, 0.08);
+  /* Custom exterior design tones */
+  --gold: #B08B57;
+  --gold-soft: #8F7048;
+  --surface: rgba(176, 139, 87, 0.05);
+  --surface-hover: rgba(176, 139, 87, 0.08);
 }
 
 @theme inline {
