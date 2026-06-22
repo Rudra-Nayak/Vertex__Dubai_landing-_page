@@ -22,7 +22,7 @@ const treatments = [
     details: "Drought-resistant flora, custom hardscaping, and serene water features.",
     tag: "Landscaping",
     image:
-      "https://images.unsplash.com/photo-1558904541-efa843a96f09?q=80&w=1400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=1400&auto=format&fit=crop",
   },
   {
     title: "Outdoor Living & Pools",
@@ -40,7 +40,7 @@ const treatments = [
     details: "Energy-efficient LED systems with smart home integration.",
     tag: "Lighting",
     image:
-      "https://images.unsplash.com/photo-1510627498534-cf7e9002facc?q=80&w=1400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1400&auto=format&fit=crop",
   },
   {
     title: "Sustainable Design",
